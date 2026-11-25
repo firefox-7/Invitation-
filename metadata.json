@@ -1,0 +1,8 @@
+{
+  "name": "Aarav & Ananya — Wedding Invitation",
+  "description": "A minimalist luxury Indian wedding invitation for Aarav & Ananya in Patna, Bihar on February 15, 2027.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
