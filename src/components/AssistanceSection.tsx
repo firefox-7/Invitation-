@@ -18,7 +18,7 @@ export function AssistanceSection({ config }: AssistanceSectionProps) {
     <section
       id="assistance"
       aria-labelledby="assistance-heading"
-      className="py-20 sm:py-28 px-6 border-t border-[#C59B27]/20"
+      className="py-20 sm:py-28 px-6 border-t border-[#B38728]/20"
     >
       <Reveal className="max-w-2xl mx-auto text-center">
         <GoldLotusDivider className="mb-7" />
@@ -29,7 +29,7 @@ export function AssistanceSection({ config }: AssistanceSectionProps) {
 
         <h2
           id="assistance-heading"
-          className="mt-3 font-serif text-3xl sm:text-4xl font-normal tracking-tight text-balance text-[#D95D1E]"
+          className="mt-3 font-serif text-3xl sm:text-4xl font-normal tracking-tight text-balance royal-heading-gradient"
         >
           {config.assistance.heading}
         </h2>
@@ -41,9 +41,9 @@ export function AssistanceSection({ config }: AssistanceSectionProps) {
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
           <a
             href={`tel:${config.assistance.phoneNumberRaw}`}
-            className="w-full sm:w-auto min-h-[46px] px-7 py-3 inline-flex items-center justify-center gap-2.5 bg-[#D95D1E] border border-[#D95D1E] text-[#FFFFFF] text-xs sm:text-sm tracking-wide font-normal hover:bg-[#B84A14] hover:border-[#D4AF37] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D95D1E]"
+            className="w-full sm:w-auto min-h-[46px] px-7 py-3 inline-flex items-center justify-center gap-2.5 royal-crimson-btn text-xs sm:text-sm tracking-wide font-normal whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A82E18]"
           >
-            <Phone className="w-4 h-4 shrink-0 text-[#FFF4CE]" aria-hidden="true" />
+            <Phone className="w-4 h-4 shrink-0 text-[#FCF6BA]" aria-hidden="true" />
             <span className="tabular-nums">{config.assistance.phoneDisplay}</span>
           </a>
 
@@ -51,9 +51,9 @@ export function AssistanceSection({ config }: AssistanceSectionProps) {
             href={whatsappDirectUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto min-h-[46px] px-7 py-3 inline-flex items-center justify-center gap-2.5 bg-[#D95D1E] border border-[#D95D1E] text-[#FFFFFF] text-xs sm:text-sm tracking-wide font-normal hover:bg-[#B84A14] hover:border-[#D4AF37] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D95D1E]"
+            className="w-full sm:w-auto min-h-[46px] px-7 py-3 inline-flex items-center justify-center gap-2.5 royal-crimson-btn text-xs sm:text-sm tracking-wide font-normal whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A82E18]"
           >
-            <MessageCircle className="w-4 h-4 shrink-0 text-[#FFF4CE]" aria-hidden="true" />
+            <MessageCircle className="w-4 h-4 shrink-0 text-[#FCF6BA]" aria-hidden="true" />
             <span>{config.assistance.whatsappLabel}</span>
           </a>
         </div>
@@ -61,16 +61,16 @@ export function AssistanceSection({ config }: AssistanceSectionProps) {
         <div className="mt-5">
           <a
             href={`mailto:${config.assistance.email}`}
-            className="min-h-[44px] px-4 py-2 inline-flex items-center justify-center gap-2 text-xs sm:text-sm tracking-wide font-normal text-[#D95D1E] hover:text-[#B84A14] underline decoration-[#C59B27]/70 underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D95D1E]"
+            className="min-h-[44px] px-4 py-2 inline-flex items-center justify-center gap-2 text-xs sm:text-sm tracking-wide font-normal text-[#A82E18] hover:text-[#5E150B] underline decoration-[#B38728]/75 underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A82E18]"
           >
-            <Mail className="w-3.5 h-3.5 shrink-0 text-[#E06D1B]" aria-hidden="true" />
+            <Mail className="w-3.5 h-3.5 shrink-0 text-[#A82E18]" aria-hidden="true" />
             <span>{config.assistance.email}</span>
           </a>
         </div>
 
         <GoldLotusDivider className="my-10" />
 
-        <p className="font-serif text-xl sm:text-2xl italic text-[#D95D1E]/95 text-balance">
+        <p className="font-serif text-xl sm:text-2xl italic text-[#A82E18] text-balance">
           {config.assistance.blessingNote}
         </p>
       </Reveal>

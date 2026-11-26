@@ -258,13 +258,13 @@ export function OurJourneySection({ config }: OurJourneySectionProps) {
       data-testid="our-journey-section"
       aria-labelledby="our-journey-heading"
       onKeyDown={handleKeyDown}
-      className="py-20 sm:py-28 border-t border-[#C59B27]/20 overflow-hidden"
+      className="py-20 sm:py-28 border-t border-[#B38728]/20 overflow-hidden"
     >
       <Reveal className="max-w-2xl mx-auto px-6 text-center">
         <GoldLotusDivider className="mb-7" />
         <h2
           id="our-journey-heading"
-          className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-balance text-[#D95D1E]"
+          className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-balance royal-heading-gradient"
         >
           {config.ourJourney.heading}
         </h2>
@@ -318,20 +318,20 @@ export function OurJourneySection({ config }: OurJourneySectionProps) {
                 transitionDuration: isAnimating ? '500ms' : '0ms',
                 transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
               }}
-              className={`absolute top-0 left-1/2 w-[var(--slide-w)] h-full rounded-sm overflow-hidden border bg-[#FAF5EB] ${
+              className={`absolute top-0 left-1/2 w-[var(--slide-w)] h-full rounded-sm overflow-hidden border bg-[#FDFBF7] ${
                 isCenter
-                  ? 'border-[#C59B27]/55 opacity-100 z-10'
+                  ? 'border-[#B38728]/65 opacity-100 z-10 shadow-[0_14px_34px_-16px_rgba(94,21,11,0.28)]'
                   : isAdjacentPeek
-                    ? 'border-[#C59B27]/30 opacity-45 hover:opacity-70 cursor-pointer z-0'
-                    : 'border-[#C59B27]/20 opacity-0 pointer-events-none z-0'
+                    ? 'border-[#B38728]/35 opacity-45 hover:opacity-70 cursor-pointer z-0'
+                    : 'border-[#B38728]/20 opacity-0 pointer-events-none z-0'
               } ${isFarHidden ? 'invisible' : 'visible'}`}
             >
               {isFailed ? (
-                <div className="w-full h-full flex flex-col items-center justify-center px-6 text-center bg-gradient-to-br from-[#FFFFFF] via-[#FFFDF9] to-[#D95D1E]/10">
+                <div className="w-full h-full flex flex-col items-center justify-center px-6 text-center bg-gradient-to-br from-[#FFFFFF] via-[#FDFBF7] to-[#A82E18]/10">
                   <span className="text-[11px] tracking-[0.2em] text-[#8A6712] uppercase">
                     {item.slide.date}
                   </span>
-                  <span className="mt-2 font-serif text-xl sm:text-2xl text-[#D95D1E]">
+                  <span className="mt-2 font-serif text-xl sm:text-2xl text-[#A82E18]">
                     {item.slide.title}
                   </span>
                 </div>
@@ -358,7 +358,7 @@ export function OurJourneySection({ config }: OurJourneySectionProps) {
       >
         <div className="flex items-center justify-center gap-2.5 text-xs tracking-[0.18em] text-[#8A6712]">
           <span>{activeSlide.date}</span>
-          <span aria-hidden="true" className="text-[#C59B27]">
+          <span aria-hidden="true" className="text-[#B38728]">
             ·
           </span>
           <span data-testid="journey-slide-counter" className="tabular-nums">
@@ -368,7 +368,7 @@ export function OurJourneySection({ config }: OurJourneySectionProps) {
 
         <h3
           data-testid="journey-slide-title"
-          className="mt-2 font-serif text-2xl sm:text-3xl font-normal tracking-tight text-balance text-[#D95D1E]"
+          className="mt-2 font-serif text-2xl sm:text-3xl font-normal tracking-tight text-balance royal-heading-gradient"
         >
           {activeSlide.title}
         </h3>
@@ -389,7 +389,7 @@ export function OurJourneySection({ config }: OurJourneySectionProps) {
             data-testid="journey-prev-button"
             onClick={() => stepBy(-1)}
             aria-label={config.ourJourney.previousLabel}
-            className="w-11 h-11 rounded-full border border-[#C59B27]/55 bg-[#FFFFFF] text-[#D95D1E] hover:border-[#D4AF37] hover:bg-[#D95D1E] hover:text-[#FFFFFF] active:scale-[0.97] transition-all duration-200 flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B27]"
+            className="w-11 h-11 rounded-full border border-[#B38728]/60 bg-[#FFFFFF] text-[#A82E18] hover:border-[#A82E18] hover:bg-[#A82E18] hover:text-[#FFFFFF] active:scale-[0.97] transition-all duration-200 flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B38728]"
           >
             <ChevronLeft className="w-[18px] h-[18px] stroke-[1.5]" />
           </button>
@@ -410,14 +410,14 @@ export function OurJourneySection({ config }: OurJourneySectionProps) {
                   aria-label={`View milestone ${index + 1}: ${slide.title}`}
                   data-testid={`journey-dot-${index}`}
                   onClick={() => goToIndex(index)}
-                  className="h-11 px-2 flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B27] rounded-full"
+                  className="h-11 px-2 flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B38728] rounded-full"
                 >
                   <span
                     aria-hidden="true"
                     className={`block h-1.5 rounded-full transition-all duration-300 ${
                       isSelected
-                        ? 'w-5 bg-[#D95D1E]'
-                        : 'w-1.5 bg-[#C59B27]/40 hover:bg-[#C59B27]/80'
+                        ? 'w-5 bg-[#A82E18]'
+                        : 'w-1.5 bg-[#B38728]/40 hover:bg-[#B38728]/80'
                     }`}
                   />
                 </button>
@@ -430,7 +430,7 @@ export function OurJourneySection({ config }: OurJourneySectionProps) {
             data-testid="journey-next-button"
             onClick={() => stepBy(1)}
             aria-label={config.ourJourney.nextLabel}
-            className="w-11 h-11 rounded-full border border-[#C59B27]/55 bg-[#FFFFFF] text-[#D95D1E] hover:border-[#D4AF37] hover:bg-[#D95D1E] hover:text-[#FFFFFF] active:scale-[0.97] transition-all duration-200 flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C59B27]"
+            className="w-11 h-11 rounded-full border border-[#B38728]/60 bg-[#FFFFFF] text-[#A82E18] hover:border-[#A82E18] hover:bg-[#A82E18] hover:text-[#FFFFFF] active:scale-[0.97] transition-all duration-200 flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B38728]"
           >
             <ChevronRight className="w-[18px] h-[18px] stroke-[1.5]" />
           </button>

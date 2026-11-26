@@ -23,9 +23,14 @@ import {
   buildWhatsAppMessageUrl,
 } from './weddingHelpers';
 
-test('OPENING_TIMING defines 1.8s preloader and 4.0s total opening duration', () => {
-  assert.equal(OPENING_TIMING.PRELOADER_DURATION_MS, 1800);
-  assert.equal(OPENING_TIMING.CURTAIN_REVEAL_END_MS, 4000);
+test('OPENING_TIMING defines 1.4s preloader, clean monogram exit, and 2.2s curtain sweep', () => {
+  assert.equal(OPENING_TIMING.PRELOADER_DURATION_MS, 1400);
+  assert.equal(OPENING_TIMING.MONOGRAM_FADE_END_MS, 1850);
+  assert.equal(OPENING_TIMING.CURTAIN_REVEAL_END_MS, 4050);
+  assert.equal(
+    OPENING_TIMING.CURTAIN_REVEAL_END_MS - OPENING_TIMING.MONOGRAM_FADE_END_MS,
+    2200
+  );
   assert.ok(OPENING_TIMING.REDUCED_MOTION_END_MS < OPENING_TIMING.PRELOADER_DURATION_MS);
 });
 

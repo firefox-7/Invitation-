@@ -52,54 +52,54 @@ export function HeroSection({
   const [videoFailed, setVideoFailed] = useState(false);
   const [parallaxY, setParallaxY] = useState(0);
   const heroRef = useRef<HTMLElement | null>(null);
-  const isZoomedIn = openingPhase === 'preloader';
+  const isZoomedIn = openingPhase !== 'complete';
+  const isRevealReady = openingPhase === 'complete';
+  const spacedDate = formatHeroSpacedDate(config.displayDate);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
     if (prefersReducedMotion) return;
 
-    let rafId: number | null = null;
+    let rafId = 0;
 
     const updateParallax = () => {
-      rafId = null;
-      const heroHeight = heroRef.current?.offsetHeight || window.innerHeight;
-      setParallaxY(computeParallaxOffset(window.scrollY, heroHeight, 0.32));
+      rafId = 0;
+      const heroEl = heroRef.current;
+      const heroHeight = heroEl ? heroEl.offsetHeight : window.innerHeight;
+      setParallaxY(computeParallaxOffset(window.scrollY, heroHeight));
     };
 
-    const handleScroll = () => {
-      if (rafId === null) {
+    const onScroll = () => {
+      if (rafId === 0) {
         rafId = window.requestAnimationFrame(updateParallax);
       }
     };
 
     updateParallax();
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (rafId !== null) {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId !== 0) {
         window.cancelAnimationFrame(rafId);
       }
     };
   }, []);
 
   const handleScrollDown = () => {
-    const welcomeEl = document.getElementById('welcome');
-    if (welcomeEl) {
-      welcomeEl.scrollIntoView({ behavior: 'smooth' });
+    const nextSection = document.getElementById('welcome');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const spacedDate = formatHeroSpacedDate(config.displayDate);
 
   return (
     <section
       ref={heroRef}
       data-testid="hero-section"
       aria-label="Wedding Invitation Hero"
-      className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center px-5 sm:px-10 pt-10 pb-20 sm:py-16 overflow-hidden bg-[#1A0D06] text-[#FFFFFF]"
+      className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center px-5 sm:px-10 pt-10 pb-20 sm:py-16 overflow-hidden bg-[#1D0603] text-[#FFFFFF]"
     >
       {/* Shared SVG clipPath matching the cusped Royal Mughal / Jharokha Arch silhouette */}
       <svg
@@ -170,13 +170,13 @@ export function HeroSection({
         </div>
       </div>
 
-      {/* LAYER 2: Cinematic Lighting — Sunset-Amber / Burnt-Orange Vignette + Warm Golden Glow */}
+      {/* LAYER 2: Cinematic Lighting — Royal Saffron-Vermilion Velvet Vignette + Antique Gold Center Glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-[5]"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 48%, rgba(217, 93, 30, 0.14) 20%, rgba(76, 28, 8, 0.56) 66%, rgba(22, 9, 3, 0.90) 100%)',
+            'radial-gradient(ellipse at 50% 48%, rgba(168, 46, 24, 0.14) 20%, rgba(94, 21, 11, 0.56) 66%, rgba(28, 6, 3, 0.90) 100%)',
         }}
       />
       <div
@@ -184,65 +184,89 @@ export function HeroSection({
         className="pointer-events-none absolute inset-0 z-[6]"
         style={{
           background:
-            'radial-gradient(circle at 50% 48%, rgba(224, 109, 27, 0.24) 0%, rgba(212, 175, 55, 0.16) 36%, transparent 66%)',
+            'radial-gradient(circle at 50% 48%, rgba(201, 74, 26, 0.18) 0%, rgba(252, 246, 186, 0.14) 36%, transparent 66%)',
         }}
       />
 
       {/* LAYER 3: Midground Frosted Royal Mughal / Jharokha Arch Depth Card */}
       <div
         data-testid="hero-arch-card"
-        className="relative z-10 w-full max-w-[360px] sm:max-w-[540px] md:max-w-[640px] mx-auto drop-shadow-[0_28px_55px_rgba(18,7,2,0.62)]"
+        className="relative z-10 w-full max-w-[360px] sm:max-w-[540px] md:max-w-[640px] mx-auto drop-shadow-[0_28px_55px_rgba(24,5,2,0.68)]"
       >
         {/* Clipped Frosted Glass Arch Interior */}
         <div
           style={{ clipPath: 'url(#jharokhaArchClip)' }}
-          className="relative px-7 pt-16 pb-12 sm:px-14 sm:pt-20 sm:pb-16 bg-[rgba(34,16,7,0.34)] backdrop-blur-[8px] text-center"
+          className="relative overflow-hidden px-7 pt-16 pb-12 sm:px-14 sm:pt-20 sm:pb-16 bg-[rgba(36,10,5,0.38)] backdrop-blur-[8px] text-center"
         >
           {/* Subtle inner golden luminance behind couple names */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_54%,rgba(224,109,27,0.16)_0%,rgba(212,175,55,0.12)_38%,transparent_66%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_54%,rgba(201,74,26,0.14)_0%,rgba(252,246,186,0.11)_38%,transparent_66%)]"
           />
 
-          {/* Double Thin Antique Gold Jharokha Arch SVG Border + Corner Filigree */}
+          {/* Metallic Gold Light-Shimmer Sweep across Jharokha Arch upon Curtain Reveal */}
+          {isRevealReady && (
+            <div
+              data-testid="hero-arch-gleam"
+              aria-hidden="true"
+              className="hero-arch-gleam pointer-events-none absolute inset-y-0 left-0 w-2/5 z-[2] bg-gradient-to-r from-transparent via-[#FCF6BA]/25 to-transparent"
+            />
+          )}
+
+          {/* Double Thin Shimmering Antique Gold Jharokha Arch SVG Border + Corner Filigree */}
           <svg
             viewBox="0 0 1000 1000"
             preserveAspectRatio="none"
             fill="none"
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 w-full h-full text-[#D4AF37]"
+            className="pointer-events-none absolute inset-0 w-full h-full"
           >
+            <defs>
+              <linearGradient
+                id="heroArchGoldFoil"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#BF953F" />
+                <stop offset="25%" stopColor="#FCF6BA" />
+                <stop offset="50%" stopColor="#B38728" />
+                <stop offset="75%" stopColor="#FBF5B7" />
+                <stop offset="100%" stopColor="#AA771C" />
+              </linearGradient>
+            </defs>
             {/* Outer Thin Gold Arch Border */}
             <path
               d="M 4,996 L 4,222 C 4,162 62,137 122,122 C 191,104 250,70 320,58 C 390,46 450,34 500,10 C 550,34 610,46 680,58 C 750,70 809,104 878,122 C 938,137 996,162 996,222 L 996,996 Z"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeOpacity="0.9"
+              stroke="url(#heroArchGoldFoil)"
+              strokeWidth="1.65"
+              strokeOpacity="0.95"
               vectorEffect="non-scaling-stroke"
             />
             {/* Inner Delicate Gold Arch Border */}
             <path
               d="M 18,982 L 18,232 C 18,175 74,151 133,136 C 200,118 258,85 326,73 C 394,61 452,49 500,26 C 548,49 606,61 674,73 C 742,85 800,118 867,136 C 926,151 982,175 982,232 L 982,982 Z"
-              stroke="currentColor"
-              strokeWidth="0.85"
-              strokeOpacity="0.55"
+              stroke="url(#heroArchGoldFoil)"
+              strokeWidth="0.9"
+              strokeOpacity="0.62"
               vectorEffect="non-scaling-stroke"
             />
             {/* Bottom Corner Filigree L-brackets */}
             <path
               d="M 18,940 V 982 H 64 M 982,940 V 982 H 936 M 32,956 V 970 H 48 M 968,956 V 970 H 952"
-              stroke="currentColor"
-              strokeWidth="1"
-              strokeOpacity="0.72"
+              stroke="url(#heroArchGoldFoil)"
+              strokeWidth="1.05"
+              strokeOpacity="0.8"
               vectorEffect="non-scaling-stroke"
             />
           </svg>
 
           {/* Arch Card Typography Hierarchy */}
           <div className="relative z-10 flex flex-col items-center">
-            <RoyalGaneshaMotif className="w-10 h-10 sm:w-11 sm:h-11 text-[#E8CE82] drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]" />
+            <RoyalGaneshaMotif className="w-10 h-10 sm:w-11 sm:h-11 text-[#FBF5B7] drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]" />
 
-            <p className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.34em] font-medium text-[#E8CE82]">
+            <p className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.34em] font-medium text-[#FCF6BA]">
               Shubh Vivah
             </p>
 
@@ -250,13 +274,17 @@ export function HeroSection({
               {spacedDate}
             </p>
 
-            <h1 className="mt-7 sm:mt-9 font-serif text-5xl sm:text-7xl md:text-[5.25rem] font-normal tracking-tight leading-[1.06] text-balance bg-gradient-to-b from-[#FFF9E6] via-[#F2CE68] to-[#D4AF37] bg-clip-text text-transparent drop-shadow-[0_6px_16px_rgba(18,7,2,0.82)]">
+            <h1
+              className={`mt-7 sm:mt-9 font-serif text-5xl sm:text-7xl md:text-[5.25rem] font-normal tracking-tight leading-[1.06] text-balance hero-gold-shimmer-text bg-clip-text text-transparent drop-shadow-[0_6px_16px_rgba(24,5,2,0.85)] ${
+                isRevealReady ? 'hero-gold-shimmer-active' : ''
+              }`}
+            >
               {config.coupleNames}
             </h1>
 
             <GoldLotusDivider className="my-6 sm:my-7" />
 
-            <p className="text-[11px] sm:text-xs uppercase tracking-[0.34em] font-normal text-[#F5E3A8]/95">
+            <p className="text-[11px] sm:text-xs uppercase tracking-[0.34em] font-normal text-[#FBF5B7]/95">
               {config.locationShort}
             </p>
           </div>
@@ -296,18 +324,18 @@ export function HeroSection({
       {/* LAYER 5: Seamless Bottom Fade Transition + Floating Scroll Down Indicator */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-32 z-20 bg-gradient-to-b from-transparent via-[#FFFDF9]/50 to-[#FFFDF9]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-32 z-20 bg-gradient-to-b from-transparent via-[#FDFBF7]/50 to-[#FDFBF7]"
       />
 
       <div className="relative z-30 mt-8 sm:mt-10">
         <button
           type="button"
           onClick={handleScrollDown}
-          className="group min-h-[44px] px-5 py-2 inline-flex flex-col items-center justify-center gap-1.5 text-[11px] sm:text-xs uppercase tracking-[0.26em] font-normal text-[#FFFFFF]/95 hover:text-[#FFF4CE] drop-shadow-[0_2px_8px_rgba(18,7,2,0.85)] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D4AF37]"
+          className="group min-h-[44px] px-5 py-2 inline-flex flex-col items-center justify-center gap-1.5 text-[11px] sm:text-xs uppercase tracking-[0.26em] font-normal text-[#FFFFFF]/95 hover:text-[#FCF6BA] drop-shadow-[0_2px_8px_rgba(24,5,2,0.85)] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D4AF37]"
         >
           <span>{config.heroScrollLabel}</span>
           <ChevronDown
-            className="w-4 h-4 text-[#F2CE68] animate-bounce motion-reduce:animate-none"
+            className="w-4 h-4 text-[#FBF5B7] animate-bounce motion-reduce:animate-none"
             aria-hidden="true"
           />
         </button>

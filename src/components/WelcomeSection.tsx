@@ -17,7 +17,7 @@ export function WelcomeSection({ config }: WelcomeSectionProps) {
         <GoldLotusDivider className="mb-8" />
         <h2
           id="welcome-heading"
-          className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-balance text-[#D95D1E]"
+          className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-balance royal-heading-gradient"
         >
           {config.welcome.heading}
         </h2>

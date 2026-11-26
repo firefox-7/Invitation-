@@ -1,12 +1,17 @@
 import type { CountdownState, WeddingConfig } from '../types/wedding';
 
 export const OPENING_TIMING = {
-  PRELOADER_DURATION_MS: 1800,
-  CURTAIN_REVEAL_END_MS: 4000,
+  PRELOADER_DURATION_MS: 1400,
+  MONOGRAM_FADE_END_MS: 1850,
+  CURTAIN_REVEAL_END_MS: 4050,
   REDUCED_MOTION_END_MS: 900,
 } as const;
 
-export type OpeningPhase = 'preloader' | 'curtains' | 'complete';
+export type OpeningPhase =
+  | 'preloader'
+  | 'monogram-exit'
+  | 'curtains'
+  | 'complete';
 
 export type MusicPlaybackState =
   | 'idle'

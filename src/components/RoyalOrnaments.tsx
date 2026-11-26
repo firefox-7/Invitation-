@@ -86,44 +86,52 @@ export function GoldLotusDivider({ className = '' }: OrnamentProps) {
       aria-hidden="true"
       className={`flex items-center justify-center gap-3.5 ${className}`}
     >
-      <span className="w-10 sm:w-14 h-px bg-gradient-to-r from-transparent via-[#C59B27]/55 to-[#C59B27]/85" />
+      <span className="w-10 sm:w-14 h-px bg-gradient-to-r from-transparent via-[#B38728]/55 to-[#BF953F]/95" />
       <svg
         viewBox="0 0 44 24"
         fill="none"
-        className="w-9 h-5 text-[#C59B27] shrink-0"
+        className="w-9 h-5 shrink-0"
       >
+        <defs>
+          <linearGradient id="lotusGoldFoil" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#BF953F" />
+            <stop offset="30%" stopColor="#FBF5B7" />
+            <stop offset="60%" stopColor="#B38728" />
+            <stop offset="100%" stopColor="#AA771C" />
+          </linearGradient>
+        </defs>
         {/* Center Lotus Petal */}
         <path
           d="M22 3 C25 7.5, 25 13, 22 17 C19 13, 19 7.5, 22 3 Z"
-          stroke="currentColor"
-          strokeWidth="1.05"
+          stroke="url(#lotusGoldFoil)"
+          strokeWidth="1.1"
           strokeLinejoin="round"
         />
         {/* Inner Side Petals */}
         <path
           d="M22 17 C17.5 15, 14.5 11, 15 6.5 C18.5 8, 20.5 12, 22 17 Z"
-          stroke="currentColor"
-          strokeWidth="0.95"
+          stroke="url(#lotusGoldFoil)"
+          strokeWidth="1"
           strokeLinejoin="round"
         />
         <path
           d="M22 17 C26.5 15, 29.5 11, 29 6.5 C25.5 8, 23.5 12, 22 17 Z"
-          stroke="currentColor"
-          strokeWidth="0.95"
+          stroke="url(#lotusGoldFoil)"
+          strokeWidth="1"
           strokeLinejoin="round"
         />
         {/* Outer Delicate Leaves & Base Stem */}
         <path
           d="M11 15.5 C14.5 16.5, 18 17.5, 22 17.5 C26 17.5, 29.5 16.5, 33 15.5"
-          stroke="currentColor"
-          strokeWidth="0.9"
+          stroke="url(#lotusGoldFoil)"
+          strokeWidth="0.95"
           strokeLinecap="round"
         />
-        <circle cx="8" cy="14" r="1" fill="currentColor" opacity="0.8" />
-        <circle cx="36" cy="14" r="1" fill="currentColor" opacity="0.8" />
-        <circle cx="22" cy="20.5" r="1.1" fill="currentColor" />
+        <circle cx="8" cy="14" r="1" fill="#BF953F" opacity="0.85" />
+        <circle cx="36" cy="14" r="1" fill="#BF953F" opacity="0.85" />
+        <circle cx="22" cy="20.5" r="1.15" fill="#B38728" />
       </svg>
-      <span className="w-10 sm:w-14 h-px bg-gradient-to-l from-transparent via-[#C59B27]/55 to-[#C59B27]/85" />
+      <span className="w-10 sm:w-14 h-px bg-gradient-to-l from-transparent via-[#B38728]/55 to-[#BF953F]/95" />
     </div>
   );
 }
@@ -150,7 +158,7 @@ export function GoldCornerFiligree({
       viewBox="0 0 32 32"
       fill="none"
       aria-hidden="true"
-      className={`absolute pointer-events-none text-[#C59B27]/75 ${sizeClass} ${rotationMap[position]}`}
+      className={`absolute pointer-events-none text-[#B38728]/80 ${sizeClass} ${rotationMap[position]}`}
     >
       <path
         d="M2 24 V6 C2 3.8, 3.8 2, 6 2 H24"
@@ -252,7 +260,7 @@ export function IndianEventIcon({ title }: { title: string }) {
         viewBox="0 0 24 24"
         fill="none"
         aria-hidden="true"
-        className="w-4 h-4 text-[#E06D1B] shrink-0"
+        className="w-4 h-4 text-[#A82E18] shrink-0"
       >
         <circle cx="12" cy="12" r="2.2" stroke="currentColor" strokeWidth="1.25" />
         <path
@@ -271,7 +279,7 @@ export function IndianEventIcon({ title }: { title: string }) {
         viewBox="0 0 24 24"
         fill="none"
         aria-hidden="true"
-        className="w-4 h-4 text-[#E06D1B] shrink-0"
+        className="w-4 h-4 text-[#A82E18] shrink-0"
       >
         {/* Minimal Shehnai / Festive Music Note */}
         <path
@@ -299,7 +307,7 @@ export function IndianEventIcon({ title }: { title: string }) {
         viewBox="0 0 24 24"
         fill="none"
         aria-hidden="true"
-        className="w-4 h-4 text-[#E06D1B] shrink-0"
+        className="w-4 h-4 text-[#A82E18] shrink-0"
       >
         {/* Royal Ceremonial Chhatri / Procession Umbrella */}
         <path
@@ -324,7 +332,7 @@ export function IndianEventIcon({ title }: { title: string }) {
         viewBox="0 0 24 24"
         fill="none"
         aria-hidden="true"
-        className="w-4 h-4 text-[#E06D1B] shrink-0"
+        className="w-4 h-4 text-[#A82E18] shrink-0"
       >
         {/* Intertwined Floral Jaimala Rings */}
         <circle cx="9.5" cy="12" r="4.8" stroke="currentColor" strokeWidth="1.2" />
@@ -339,7 +347,7 @@ export function IndianEventIcon({ title }: { title: string }) {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      className="w-4 h-4 text-[#E06D1B] shrink-0"
+      className="w-4 h-4 text-[#A82E18] shrink-0"
     >
       <path
         d="M12 4.5 C13.8 7, 14.5 9, 12 11.2 C9.5 9, 10.2 7, 12 4.5 Z"

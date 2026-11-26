@@ -32,13 +32,13 @@ export function CountdownSection({ config }: CountdownSectionProps) {
   return (
     <section
       aria-labelledby="countdown-heading"
-      className="py-20 sm:py-28 px-6 border-t border-[#C59B27]/20"
+      className="py-20 sm:py-28 px-6 border-t border-[#B38728]/20"
     >
       <Reveal className="max-w-3xl mx-auto text-center">
         <GoldLotusDivider className="mb-7" />
         <h2
           id="countdown-heading"
-          className="font-serif text-3xl sm:text-4xl font-normal tracking-tight text-balance text-[#D95D1E]"
+          className="font-serif text-3xl sm:text-4xl font-normal tracking-tight text-balance royal-heading-gradient"
         >
           {config.countdown.heading}
         </h2>
@@ -55,30 +55,32 @@ export function CountdownSection({ config }: CountdownSectionProps) {
             {units.map((unit) => (
               <div
                 key={unit.label}
-                className="relative flex flex-col items-center justify-center py-6 sm:py-7 px-3 border border-[#C59B27]/45 bg-[#FFFFFF]"
+                className="gold-foil-border p-[1px] shadow-[0_10px_28px_-18px_rgba(94,21,11,0.28)]"
               >
-                <GoldCornerFiligree
-                  position="top-left"
-                  sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5"
-                />
-                <GoldCornerFiligree
-                  position="top-right"
-                  sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5"
-                />
-                <GoldCornerFiligree
-                  position="bottom-left"
-                  sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5"
-                />
-                <GoldCornerFiligree
-                  position="bottom-right"
-                  sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5"
-                />
-                <span className="font-serif text-4xl sm:text-5xl font-normal tracking-tight tabular-nums text-[#D95D1E]">
-                  {unit.value}
-                </span>
-                <span className="mt-2 text-[11px] sm:text-xs tracking-[0.18em] font-normal text-[#262220]/70">
-                  {unit.label}
-                </span>
+                <div className="relative flex flex-col items-center justify-center py-6 sm:py-7 px-3 bg-[#FFFFFF]">
+                  <GoldCornerFiligree
+                    position="top-left"
+                    sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5"
+                  />
+                  <GoldCornerFiligree
+                    position="top-right"
+                    sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5"
+                  />
+                  <GoldCornerFiligree
+                    position="bottom-left"
+                    sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5"
+                  />
+                  <GoldCornerFiligree
+                    position="bottom-right"
+                    sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5"
+                  />
+                  <span className="font-serif text-4xl sm:text-5xl font-normal tracking-tight tabular-nums royal-heading-gradient">
+                    {unit.value}
+                  </span>
+                  <span className="mt-2 text-[11px] sm:text-xs tracking-[0.18em] font-normal text-[#262220]/70">
+                    {unit.label}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

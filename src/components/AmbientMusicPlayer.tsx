@@ -315,7 +315,7 @@ export function AmbientMusicPlayer({
       <audio
         ref={audioRef}
         loop
-        preload="auto"
+        preload="metadata"
         aria-hidden="true"
       >
         <source src={config.audioUrl} type="audio/mpeg" />
@@ -332,7 +332,7 @@ export function AmbientMusicPlayer({
         aria-pressed={isPlaying}
         aria-label={isPlaying ? config.pauseLabel : config.playLabel}
         title={isPlaying ? config.pauseLabel : config.playLabel}
-        className={`fixed bottom-5 right-5 z-40 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center bg-[#FFFFFF]/95 backdrop-blur-md border border-[#C59B27]/60 text-[#D95D1E] shadow-sm hover:border-[#D95D1E] hover:bg-[#FFFDF9] active:scale-95 transition-all duration-500 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D95D1E] ${
+        className={`fixed bottom-5 right-5 z-40 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center bg-[#FFFFFF]/95 backdrop-blur-md border border-[#B38728]/65 text-[#A82E18] shadow-sm hover:border-[#A82E18] hover:bg-[#FDFBF7] active:scale-95 transition-all duration-500 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A82E18] ${
           isVisible
             ? 'opacity-100 translate-y-0 pointer-events-auto'
             : 'opacity-0 translate-y-2 pointer-events-none'
@@ -343,14 +343,14 @@ export function AmbientMusicPlayer({
             aria-hidden="true"
             className="flex items-end justify-center gap-[3px] h-3.5 w-4"
           >
-            <span className="w-[2px] h-3.5 bg-[#C59B27] rounded-full music-bar-1" />
-            <span className="w-[2px] h-3.5 bg-[#D95D1E] rounded-full music-bar-2" />
-            <span className="w-[2px] h-3.5 bg-[#C59B27] rounded-full music-bar-3" />
+            <span className="w-[2px] h-3.5 bg-[#B38728] rounded-full music-bar-1" />
+            <span className="w-[2px] h-3.5 bg-[#A82E18] rounded-full music-bar-2" />
+            <span className="w-[2px] h-3.5 bg-[#B38728] rounded-full music-bar-3" />
           </span>
         ) : isMutedByUser ? (
-          <VolumeX className="w-4 h-4 text-[#D95D1E]/80" aria-hidden="true" />
+          <VolumeX className="w-4 h-4 text-[#A82E18]/85" aria-hidden="true" />
         ) : (
-          <Music className="w-4 h-4 text-[#C59B27]" aria-hidden="true" />
+          <Music className="w-4 h-4 text-[#B38728]" aria-hidden="true" />
         )}
       </button>
     </>

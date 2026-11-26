@@ -11,13 +11,13 @@ export function DressCodeSection({ config }: DressCodeSectionProps) {
     <section
       id="dress-code"
       aria-labelledby="dress-code-heading"
-      className="py-20 sm:py-28 px-6 border-t border-[#C59B27]/20"
+      className="py-20 sm:py-28 px-6 border-t border-[#B38728]/20"
     >
       <Reveal className="max-w-2xl mx-auto text-center">
         <GoldLotusDivider className="mb-7" />
         <h2
           id="dress-code-heading"
-          className="font-serif text-3xl sm:text-4xl font-normal tracking-tight text-balance text-[#D95D1E]"
+          className="font-serif text-3xl sm:text-4xl font-normal tracking-tight text-balance royal-heading-gradient"
         >
           {config.dressCode.heading}
         </h2>
@@ -47,9 +47,9 @@ export function DressCodeSection({ config }: DressCodeSectionProps) {
                   cy="32"
                   r="30.5"
                   fill="none"
-                  stroke="#C59B27"
-                  strokeOpacity="0.55"
-                  strokeWidth="0.9"
+                  stroke="#B38728"
+                  strokeOpacity="0.6"
+                  strokeWidth="0.95"
                 />
                 <circle
                   cx="32"

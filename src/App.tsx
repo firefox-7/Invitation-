@@ -161,10 +161,10 @@ export const WEDDING_CONFIG: WeddingConfig = {
       'We would love to see you dressed in Traditional Indian or Indo-Western attire inspired by our wedding palette.',
     swatches: [
       { name: 'Pure White', hex: '#FFFFFF' },
-      { name: 'Marigold Orange', hex: '#E06D1B' },
+      { name: 'Royal Saffron', hex: '#C94A1A' },
       { name: 'Antique Gold', hex: '#D4AF37' },
       { name: 'Soft Peach', hex: '#FAD4B8' },
-      { name: 'Warm Ivory', hex: '#FAF6F0' },
+      { name: 'Warm Ivory', hex: '#FDFBF7' },
     ],
   },
 
@@ -270,16 +270,21 @@ export default function App() {
       return () => window.clearTimeout(quickTimer);
     }
 
-    const preloaderTimer = window.setTimeout(() => {
-      setOpeningPhase('curtains');
+    const monogramExitTimer = window.setTimeout(() => {
+      setOpeningPhase('monogram-exit');
     }, OPENING_TIMING.PRELOADER_DURATION_MS);
+
+    const curtainTimer = window.setTimeout(() => {
+      setOpeningPhase('curtains');
+    }, OPENING_TIMING.MONOGRAM_FADE_END_MS);
 
     const completeTimer = window.setTimeout(() => {
       setOpeningPhase('complete');
     }, OPENING_TIMING.CURTAIN_REVEAL_END_MS);
 
     return () => {
-      window.clearTimeout(preloaderTimer);
+      window.clearTimeout(monogramExitTimer);
+      window.clearTimeout(curtainTimer);
       window.clearTimeout(completeTimer);
     };
   }, []);
